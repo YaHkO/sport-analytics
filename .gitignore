@@ -1,0 +1,37 @@
+# Symfony
+/backend/var/
+/backend/vendor/
+/backend/.env.local
+/backend/.env.local.php
+/backend/.env.*.local
+/backend/public/bundles/
+/backend/var/cache/
+/backend/var/log/
+
+# React
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Docker volumes
+/docker/mysql/data/
+
+# Symfony CLI
+/.symfony.local.yaml
+/.symfony/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
