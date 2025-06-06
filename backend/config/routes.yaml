@@ -1,0 +1,12 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+sports_api:
+    resource:
+        path: ../src/Sports/UI/Web/Controller/
+        namespace: App\Sports\UI\Web\Controller
+    type: attribute
+    prefix: /api

@@ -1,0 +1,46 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    # Binding Repository Interface → Implémentation Doctrine
+    App\Sports\Domain\Repository\ActivityRepositoryInterface:
+        alias: App\Sports\Infrastructure\Repository\DoctrineActivityRepository
+
+    # Configuration Service Strava avec paramètres d'environnement
+    App\Sports\Infrastructure\ExternalService\StravaApiService:
+        arguments:
+            $clientId: '%env(STRAVA_CLIENT_ID)%'
+            $clientSecret: '%env(STRAVA_CLIENT_SECRET)%'
+            $accessToken: '%env(STRAVA_ACCESS_TOKEN)%'
+            $refreshToken: '%env(STRAVA_REFRESH_TOKEN)%'
+
+    # Auto-wiring des Use Case Handlers
+    App\Sports\Application\UseCase\:
+        resource: '../src/Sports/Application/UseCase/'
+        tags: [ 'app.handler' ]
+
+    # Auto-wiring des services Infrastructure
+    App\Sports\Infrastructure\:
+        resource: '../src/Sports/Infrastructure/'
+
+    # Auto-wiring des controllers DDD (pour plus tard)
+    App\Sports\UI\Web\Controller\:
+        resource: '../src/Sports/UI/Web/Controller/'
+        tags: [ 'controller.service_arguments' ]

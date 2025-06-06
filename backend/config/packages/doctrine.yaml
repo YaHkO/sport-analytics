@@ -1,0 +1,32 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+        driver: 'pdo_mysql'
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+
+    orm:
+        auto_generate_proxy_classes: true
+        auto_mapping: false
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        mappings:
+            # Entités du domaine Sports
+            SportsEntities:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Sports/Domain/Entity'
+                prefix: 'App\Sports\Domain\Entity'
+                type: attribute
+            # Value Objects (Embeddables)
+            SportsValueObjects:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Sports/Domain/ValueObject'
+                prefix: 'App\Sports\Domain\ValueObject'
+                type: attribute
+            # Shared Value Objects
+            SharedValueObjects:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Shared/Domain/ValueObject'
+                prefix: 'App\Shared\Domain\ValueObject'
+                type: attribute
