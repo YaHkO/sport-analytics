@@ -1,12 +1,12 @@
 # Symfony
-/backend/var/
-/backend/vendor/
-/backend/.env.local
-/backend/.env.local.php
-/backend/.env.*.local
-/backend/public/bundles/
-/backend/var/cache/
-/backend/var/log/
+#/backend/var/
+#/backend/vendor/
+#/backend/.env.local
+#/backend/.env.local.php
+#/backend/.env.*.local
+#/backend/public/bundles/
+#/backend/var/cache/
+#/backend/var/log/
 
 # React
 /frontend/node_modules/
